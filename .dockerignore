@@ -1,9 +1,50 @@
-.venv
-__pycache__
+# --- Python build artifacts ---
+.venv/
+venv/
+env/
+__pycache__/
 *.pyc
-.pytest_cache
-.ruff_cache
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Secrets (never bake into image) ---
 .env
-.git
+.env.*
+*.env
+judging.env
+secrets/
+
+# --- VCS / IDE / OS noise ---
+.git/
+.gitignore
+.gitattributes
+.github/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Test / docs that bloat the image ---
+tests/
+docs/
 *.pdf
-.puku
+.puku/
+PUKU_DEV_GUIDELINES.md
+RUNBOOK.md
+PORIDHI_DEPLOY.md
+README.md
+
+# --- Local scripts that aren't needed in the runtime image ---
+scripts/smoke_test.py
+scripts/verify_local.py
+
+# --- Misc ---
+*.log
+*.tmp
+*.bak
+node_modules/

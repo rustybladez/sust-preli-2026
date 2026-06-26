@@ -225,3 +225,7 @@ PUKU_DEV_GUIDELINES.md
 PROGRESS.md
 
 .fastapicloud
+*.tmp*
+dump_pdfs.py
+*tmp*
+uvi*

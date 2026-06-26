@@ -30,3 +30,20 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+
+# -----------------------------------------------------------------------------
+# setuptools package discovery
+# -----------------------------------------------------------------------------
+# `samples/` was triggering "Multiple top-level packages discovered" on
+# FastAPI Cloud's build backend (setuptools >=68 with strict auto-discovery)
+# because it contains Python files alongside `app/`. We explicitly scope the
+# distribution to the runtime package only — samples/, tests/, scripts/, and
+# docs/ are intentionally NOT shipped as installable packages.
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["samples*", "tests*", "scripts*", "docs*"]
+
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
